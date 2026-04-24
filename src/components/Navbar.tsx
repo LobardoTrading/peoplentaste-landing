@@ -35,24 +35,16 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
           scrolled
             ? "bg-white/90 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.06)] py-4"
-            : "bg-transparent py-6"
+            : "bg-white py-5"
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-8 flex items-center justify-between">
           <a href="#inicio" className="relative z-10">
             <div className="leading-[0.85]">
-              <span
-                className={`font-black text-[15px] tracking-[-0.02em] block transition-colors duration-500 ${
-                  scrolled || mobileOpen ? "text-dark" : "text-white"
-                }`}
-              >
+              <span className="font-black text-[15px] tracking-[-0.02em] block text-dark">
                 PEOPLE
               </span>
-              <span
-                className={`font-black text-[15px] tracking-[-0.02em] block transition-colors duration-500 ${
-                  scrolled || mobileOpen ? "text-brand" : "text-brand-light"
-                }`}
-              >
+              <span className="font-black text-[15px] tracking-[-0.02em] block text-brand">
                 &TASTE
               </span>
             </div>
@@ -63,9 +55,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`text-[13px] font-medium tracking-wide uppercase transition-all duration-300 hover:text-brand ${
-                  scrolled ? "text-muted" : "text-white/70 hover:text-white"
-                }`}
+                className="text-[13px] font-medium tracking-wide uppercase text-muted transition-all duration-300 hover:text-brand"
               >
                 {link.label}
               </a>
@@ -75,11 +65,7 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <a
               href="#contacto"
-              className={`text-[13px] font-semibold tracking-wide uppercase px-7 py-3 rounded-full transition-all duration-300 ${
-                scrolled
-                  ? "bg-dark text-white hover:bg-brand"
-                  : "bg-white/10 text-white border border-white/20 hover:bg-white hover:text-dark backdrop-blur-sm"
-              }`}
+              className="text-[13px] font-semibold tracking-wide uppercase px-7 py-3 rounded-full bg-dark text-white hover:bg-brand transition-all duration-300"
             >
               Cotizar
             </a>
@@ -91,30 +77,16 @@ export default function Navbar() {
             aria-label="Menú"
           >
             <motion.span
-              animate={
-                mobileOpen
-                  ? { rotate: 45, y: 7, background: "#111" }
-                  : { rotate: 0, y: 0 }
-              }
-              className={`block w-6 h-[1.5px] transition-colors ${
-                scrolled || mobileOpen ? "bg-dark" : "bg-white"
-              }`}
+              animate={mobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+              className="block w-6 h-[1.5px] bg-dark"
             />
             <motion.span
               animate={mobileOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-              className={`block w-6 h-[1.5px] transition-colors ${
-                scrolled || mobileOpen ? "bg-dark" : "bg-white"
-              }`}
+              className="block w-6 h-[1.5px] bg-dark"
             />
             <motion.span
-              animate={
-                mobileOpen
-                  ? { rotate: -45, y: -7, background: "#111" }
-                  : { rotate: 0, y: 0 }
-              }
-              className={`block w-6 h-[1.5px] transition-colors ${
-                scrolled || mobileOpen ? "bg-dark" : "bg-white"
-              }`}
+              animate={mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+              className="block w-6 h-[1.5px] bg-dark"
             />
           </button>
         </div>
@@ -127,7 +99,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-40 bg-warm lg:hidden"
+            className="fixed inset-0 z-40 bg-white lg:hidden"
           >
             <div className="flex flex-col justify-center items-start h-full px-12">
               {navLinks.map((link, i) => (

@@ -11,12 +11,12 @@ export default function Marquee() {
   ];
 
   return (
-    <div className="bg-dark py-5 overflow-hidden border-y border-white/[0.04]">
+    <div className="bg-white py-5 overflow-hidden border-y border-dark/[0.06]">
       <div className="animate-marquee whitespace-nowrap flex">
         {[...items, ...items].map((item, i) => (
           <span key={i} className="inline-flex items-center mx-8">
             <span className="w-1.5 h-1.5 rounded-full bg-brand mr-8 flex-shrink-0" />
-            <span className="text-white/30 text-[13px] font-medium tracking-[0.15em] uppercase">
+            <span className="text-muted/40 text-[13px] font-medium tracking-[0.15em] uppercase">
               {item}
             </span>
           </span>

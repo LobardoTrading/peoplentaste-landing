@@ -34,7 +34,7 @@ export default function Contact() {
       {/* Background */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1574482620826-40685ca5ebd2?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80"
           alt="Fondo"
           fill
           className="object-cover"
