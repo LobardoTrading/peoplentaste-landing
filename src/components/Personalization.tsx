@@ -30,8 +30,8 @@ function FeatureItem({ feature, index }: { feature: (typeof features)[0]; index:
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: 25 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
+      initial={{ opacity: 0, y: 15 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.08 }}
       className="group flex items-start gap-5 py-6 border-b border-dark/[0.06] last:border-0 cursor-default"
     >
@@ -76,8 +76,8 @@ export default function Personalization() {
             <div className="relative">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden img-zoom">
                 <Image
-                  src="https://images.unsplash.com/photo-1549488344-cbb6c34cf08b?w=800&q=80"
-                  alt="Gift box packaging premium"
+                  src="https://images.unsplash.com/photo-1608346128025-1896b97a6fa7?w=800&q=80"
+                  alt="Productos gourmet artesanales"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -93,8 +93,8 @@ export default function Personalization() {
                 className="absolute -bottom-6 -right-4 md:right-6 w-[45%] aspect-square rounded-xl overflow-hidden shadow-2xl shadow-dark/20 ring-4 ring-white img-zoom"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&q=80"
-                  alt="Diseño personalizado"
+                  src="https://images.unsplash.com/photo-1547595628-c61a29f496f0?w=400&q=80"
+                  alt="Packaging premium"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 40vw, 20vw"

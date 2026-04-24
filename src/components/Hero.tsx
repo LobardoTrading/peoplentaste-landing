@@ -9,8 +9,8 @@ export default function Hero() {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1574482620826-40685ca5ebd2?w=1920&q=85"
-          alt="Mesa con productos gourmet argentinos"
+          src="https://images.unsplash.com/photo-1470158499416-75be9aa0c4db?w=1920&q=85"
+          alt="Botellas de vino y productos gourmet"
           fill
           className="object-cover object-center scale-105"
           priority
