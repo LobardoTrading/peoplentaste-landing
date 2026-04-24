@@ -5,178 +5,81 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative min-h-screen bg-white overflow-hidden">
-      <div className="grid lg:grid-cols-2 min-h-screen">
-        {/* Left: Content on white */}
-        <div className="flex items-center px-8 md:px-16 lg:px-20 py-32 lg:py-0">
-          <div className="max-w-[520px]">
-            {/* Logo */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-12"
-            >
-              <div className="leading-[0.85]">
-                <span className="font-black text-[18px] tracking-[-0.02em] text-dark block">
-                  PEOPLE
-                </span>
-                <span className="font-black text-[18px] tracking-[-0.02em] text-brand block">
-                  &TASTE
-                </span>
-              </div>
-            </motion.div>
+    <section id="inicio" className="min-h-screen bg-white pt-20">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+        {/* Top section */}
+        <div className="pt-16 md:pt-24 pb-16 md:pb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="flex items-center gap-3 mb-8"
+          >
+            <div className="w-7 h-[1.5px] bg-brand" />
+            <span className="text-muted text-[11px] font-semibold tracking-[0.2em] uppercase">
+              Regalos Corporativos
+            </span>
+          </motion.div>
 
-            {/* Tag */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex items-center gap-4 mb-8"
+          <div className="overflow-hidden">
+            <motion.h1
+              initial={{ y: "105%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              className="font-serif text-[clamp(2.6rem,6vw,5.2rem)] font-semibold text-dark leading-[1.05] tracking-[-0.02em] max-w-3xl"
             >
-              <div className="w-8 h-[1px] bg-brand" />
-              <span className="text-muted text-[11px] font-semibold tracking-[0.25em] uppercase">
-                Regalos Corporativos
-              </span>
-            </motion.div>
-
-            {/* Title */}
-            <div className="overflow-hidden mb-2">
-              <motion.h1
-                initial={{ y: "100%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="text-[clamp(2.6rem,5.5vw,4.5rem)] font-black text-dark leading-[0.95] tracking-[-0.035em]"
-              >
-                Boxes gourmet
-              </motion.h1>
-            </div>
-            <div className="overflow-hidden mb-10">
-              <motion.h1
-                initial={{ y: "100%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                className="text-[clamp(2.6rem,5.5vw,4.5rem)] font-black text-dark leading-[0.95] tracking-[-0.035em]"
-              >
-                para <em className="font-light not-italic text-brand">sorprender</em>
-              </motion.h1>
-            </div>
-
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1 }}
-              className="text-muted text-base md:text-[17px] leading-[1.8] mb-12 max-w-[400px] font-light"
-            >
-              Experiencias gastronómicas diseñadas para empresas que buscan
-              diferenciarse. Para clientes, eventos y equipos.
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <a
-                href="#packs"
-                className="group inline-flex items-center justify-center gap-3 bg-brand text-white px-9 py-[18px] rounded-full font-semibold text-[14px] tracking-wide hover:bg-brand-dark transition-all duration-500"
-              >
-                Ver nuestros packs
-                <svg
-                  className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-              <a
-                href="#contacto"
-                className="inline-flex items-center justify-center text-dark px-9 py-[18px] rounded-full font-medium text-[14px] tracking-wide border border-dark/15 hover:border-dark/40 transition-all duration-500 text-center"
-              >
-                Solicitar cotización
-              </a>
-            </motion.div>
-
-            {/* Bottom stats */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1.6 }}
-              className="flex items-center gap-8 mt-16 pt-8 border-t border-dark/[0.06]"
-            >
-              {["6 packs exclusivos", "100% personalizable", "Envío nacional"].map(
-                (item) => (
-                  <span
-                    key={item}
-                    className="text-muted/50 text-[11px] tracking-[0.1em] uppercase font-medium"
-                  >
-                    {item}
-                  </span>
-                )
-              )}
-            </motion.div>
+              Boxes gourmet para sorprender a clientes y equipos
+            </motion.h1>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-6"
+          >
+            <a href="#packs" className="group inline-flex items-center gap-3 bg-brand text-white pl-8 pr-6 py-4 rounded-full font-medium text-[14px] hover:bg-brand-dark transition-all duration-400">
+              Ver nuestros packs
+              <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7" /></svg>
+              </span>
+            </a>
+            <a href="#contacto" className="text-muted text-[14px] font-medium hover:text-dark transition-colors border-b border-muted/30 pb-0.5 hover:border-dark/40">
+              Solicitar cotización
+            </a>
+          </motion.div>
         </div>
 
-        {/* Right: Product image */}
+        {/* Image grid */}
         <motion.div
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="relative hidden lg:block"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="grid grid-cols-12 gap-3 md:gap-4 pb-4"
         >
-          <Image
-            src="https://images.unsplash.com/photo-1513558161293-cdaf765ed514?w=1200&q=85"
-            alt="Box gourmet con productos artesanales"
-            fill
-            className="object-cover"
-            priority
-            sizes="50vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/20" />
-        </motion.div>
-
-        {/* Mobile image */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="relative h-[50vh] lg:hidden"
-        >
-          <Image
-            src="https://images.unsplash.com/photo-1513558161293-cdaf765ed514?w=800&q=80"
-            alt="Box gourmet con productos artesanales"
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
+          <div className="col-span-12 md:col-span-7 relative aspect-[16/10] rounded-xl overflow-hidden img-hover">
+            <Image
+              src="https://images.unsplash.com/photo-1513558161293-cdaf765ed514?w=1000&q=85"
+              alt="Box regalo gourmet con productos artesanales"
+              fill className="object-cover" priority sizes="(max-width:768px) 100vw, 58vw"
+            />
+          </div>
+          <div className="col-span-6 md:col-span-2 relative aspect-[3/4] rounded-xl overflow-hidden img-hover">
+            <Image
+              src="https://images.unsplash.com/photo-1482012792084-a0c3725f289f?w=500&q=80"
+              alt="Botella de gin artesanal"
+              fill className="object-cover" priority sizes="(max-width:768px) 50vw, 17vw"
+            />
+          </div>
+          <div className="col-span-6 md:col-span-3 relative aspect-[3/4] rounded-xl overflow-hidden img-hover">
+            <Image
+              src="https://images.unsplash.com/photo-1549488344-cbb6c34cf08b?w=500&q=80"
+              alt="Caja de regalo elegante"
+              fill className="object-cover" priority sizes="(max-width:768px) 50vw, 25vw"
+            />
+          </div>
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.a
-        href="#nosotros"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2 }}
-        className="absolute bottom-8 left-8 md:left-16 z-10 group flex items-center gap-3 text-muted/40 hover:text-muted transition-colors"
-      >
-        <motion.div
-          animate={{ y: [0, 4, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7" />
-          </svg>
-        </motion.div>
-      </motion.a>
     </section>
   );
 }

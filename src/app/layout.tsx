@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const geist = Geist({
+const dmSans = DM_Sans({
   subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -19,8 +27,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "People & Taste | Regalos Corporativos Gourmet",
-    description:
-      "Boxes gourmet para sorprender a clientes y equipos.",
+    description: "Boxes gourmet para sorprender a clientes y equipos.",
     type: "website",
   },
 };
@@ -31,8 +38,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${geist.className} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="es" className={`${dmSans.variable} ${playfair.variable} antialiased`}>
+      <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   );
 }

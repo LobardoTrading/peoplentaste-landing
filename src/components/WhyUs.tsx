@@ -4,105 +4,58 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const reasons = [
-  {
-    number: "01",
-    title: "Experiencias, no solo regalos",
-    description:
-      "Cada box está pensada para generar un momento memorable, no solo entregar un producto.",
-  },
-  {
-    number: "02",
-    title: "Selección gourmet cuidada",
-    description:
-      "Trabajamos con productores locales premium y marcas reconocidas de gastronomía argentina.",
-  },
-  {
-    number: "03",
-    title: "Logística simple y escalable",
-    description:
-      "Nos encargamos de todo: armado, packaging y entrega. Desde 10 hasta 1000 boxes.",
-  },
-  {
-    number: "04",
-    title: "Personalización de productos",
-    description:
-      "Adaptamos cada box a tu marca con branding en packaging y selección a medida.",
-  },
-  {
-    number: "05",
-    title: "Para clientes, eventos y equipos",
-    description:
-      "Regalos para fin de año, onboarding, eventos corporativos, fidelización y más.",
-  },
+  { title: "Experiencias, no solo regalos", description: "Cada box está pensada para generar un momento memorable, no solo entregar un producto." },
+  { title: "Selección gourmet cuidada", description: "Trabajamos con productores locales premium y marcas reconocidas de gastronomía argentina." },
+  { title: "Logística simple y escalable", description: "Nos encargamos de todo: armado, packaging y entrega. Desde 10 hasta 1000 boxes." },
+  { title: "Personalización de productos", description: "Adaptamos cada box a tu marca con branding en packaging y selección a medida." },
+  { title: "Para clientes, eventos y equipos", description: "Regalos para fin de año, onboarding, eventos corporativos, fidelización y más." },
 ];
 
 export default function WhyUs() {
-  const headerRef = useRef(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="por-que" className="py-32 bg-white relative">
-      <div className="max-w-[1400px] mx-auto px-8">
-        <div className="grid lg:grid-cols-[1fr,1.4fr] gap-20 items-start">
-          {/* Left */}
-          <div ref={headerRef} className="lg:sticky lg:top-32">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={headerInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.6 }}
-              className="flex items-center gap-4 mb-6"
-            >
-              <div className="w-10 h-[1px] bg-brand" />
-              <span className="text-brand text-[11px] font-semibold tracking-[0.25em] uppercase">
-                Diferencial
+    <section id="por-que" className="py-28 md:py-36 bg-white">
+      <div ref={ref} className="max-w-[1280px] mx-auto px-6 md:px-10">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-3 mb-5"
+        >
+          <div className="w-7 h-[1.5px] bg-brand" />
+          <span className="text-brand text-[11px] font-semibold tracking-[0.2em] uppercase">
+            ¿Por qué elegirnos?
+          </span>
+        </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 25 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="font-serif text-[2rem] md:text-[2.6rem] font-semibold text-dark leading-[1.15] tracking-[-0.01em] max-w-xl mb-16"
+        >
+          Cinco razones por las que las mejores empresas nos eligen.
+        </motion.h2>
+
+        {/* Grid de razones */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-0">
+          {reasons.map((r, i) => (
+            <div key={i} className="group py-8 border-t border-dark/[0.06]">
+              <span className="text-brand/30 text-[11px] font-bold tracking-[0.15em] block mb-4">
+                0{i + 1}
               </span>
-            </motion.div>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 40 }}
-              animate={headerInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-[3.2rem] font-black text-dark leading-[1.08] tracking-[-0.02em]"
-            >
-              ¿Por qué
-              <br />
-              <span className="text-brand">People&Taste</span>?
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={headerInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-muted mt-6 text-[16px] font-light leading-relaxed max-w-sm"
-            >
-              Cinco razones por las que las mejores empresas nos eligen para sus
-              regalos corporativos.
-            </motion.p>
-          </div>
-
-          {/* Right: Reasons - no scroll animation, always visible */}
-          <div>
-            {reasons.map((reason) => (
-              <div
-                key={reason.number}
-                className="group border-b border-dark/[0.06] last:border-0"
-              >
-                <div className="py-8 md:py-10 flex items-start gap-8 cursor-default">
-                  <span className="text-brand/25 font-black text-[2.5rem] leading-none tracking-tighter group-hover:text-brand transition-colors duration-500 flex-shrink-0 w-16">
-                    {reason.number}
-                  </span>
-                  <div className="pt-1">
-                    <h3 className="text-xl md:text-[22px] font-bold text-dark mb-3 group-hover:text-brand transition-colors duration-500">
-                      {reason.title}
-                    </h3>
-                    <p className="text-muted font-light leading-[1.7] max-w-md text-[15px]">
-                      {reason.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+              <h3 className="text-[17px] font-semibold text-dark mb-3 group-hover:text-brand transition-colors duration-400 leading-snug">
+                {r.title}
+              </h3>
+              <p className="text-muted text-[14px] font-light leading-[1.75]">
+                {r.description}
+              </p>
+            </div>
+          ))}
+          {/* Empty cell for visual balance on 3-col */}
+          <div className="hidden lg:block" />
         </div>
       </div>
     </section>

@@ -3,130 +3,75 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const navLinks = [
+const links = [
   { href: "#nosotros", label: "Nosotros" },
-  { href: "#por-que", label: "Diferencial" },
   { href: "#packs", label: "Packs" },
+  { href: "#como-funciona", label: "Proceso" },
   { href: "#personalizacion", label: "Personalización" },
   { href: "#contacto", label: "Contacto" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const fn = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", fn);
+    return () => window.removeEventListener("scroll", fn);
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [mobileOpen]);
+  }, [open]);
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+      <header
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-white/90 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.06)] py-4"
+            ? "bg-white/90 backdrop-blur-xl border-b border-black/[0.04] py-4"
             : "bg-white py-5"
         }`}
       >
-        <div className="max-w-[1400px] mx-auto px-8 flex items-center justify-between">
-          <a href="#inicio" className="relative z-10">
-            <div className="leading-[0.85]">
-              <span className="font-black text-[15px] tracking-[-0.02em] block text-dark">
-                PEOPLE
-              </span>
-              <span className="font-black text-[15px] tracking-[-0.02em] block text-brand">
-                &TASTE
-              </span>
-            </div>
+        <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex items-center justify-between">
+          <a href="#inicio" className="leading-[0.82] select-none">
+            <span className="font-extrabold text-[14px] tracking-[-0.01em] text-dark block">PEOPLE</span>
+            <span className="font-extrabold text-[14px] tracking-[-0.01em] text-brand block">&TASTE</span>
           </a>
 
-          <nav className="hidden lg:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-[13px] font-medium tracking-wide uppercase text-muted transition-all duration-300 hover:text-brand"
-              >
-                {link.label}
+          <nav className="hidden lg:flex items-center gap-9">
+            {links.map((l) => (
+              <a key={l.href} href={l.href} className="text-[13px] text-muted font-medium tracking-wide hover:text-dark transition-colors duration-300">
+                {l.label}
               </a>
             ))}
           </nav>
 
-          <div className="hidden lg:block">
-            <a
-              href="#contacto"
-              className="text-[13px] font-semibold tracking-wide uppercase px-7 py-3 rounded-full bg-dark text-white hover:bg-brand transition-all duration-300"
-            >
-              Cotizar
-            </a>
-          </div>
+          <a href="#contacto" className="hidden lg:inline-flex text-[12px] font-semibold tracking-[0.06em] uppercase bg-dark text-white px-7 py-3 rounded-full hover:bg-brand transition-colors duration-400">
+            Cotizar
+          </a>
 
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden relative z-10 w-8 h-8 flex flex-col items-center justify-center gap-[5px]"
-            aria-label="Menú"
-          >
-            <motion.span
-              animate={mobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-              className="block w-6 h-[1.5px] bg-dark"
-            />
-            <motion.span
-              animate={mobileOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-              className="block w-6 h-[1.5px] bg-dark"
-            />
-            <motion.span
-              animate={mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-              className="block w-6 h-[1.5px] bg-dark"
-            />
+          <button onClick={() => setOpen(!open)} className="lg:hidden w-8 h-8 flex flex-col items-center justify-center gap-[5px]" aria-label="Menú">
+            <motion.span animate={open ? { rotate: 45, y: 7 } : {}} className="block w-5 h-[1.5px] bg-dark" />
+            <motion.span animate={open ? { opacity: 0 } : {}} className="block w-5 h-[1.5px] bg-dark" />
+            <motion.span animate={open ? { rotate: -45, y: -7 } : {}} className="block w-5 h-[1.5px] bg-dark" />
           </button>
         </div>
-      </motion.header>
+      </header>
 
       <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-40 bg-white lg:hidden"
-          >
-            <div className="flex flex-col justify-center items-start h-full px-12">
-              {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -30 }}
-                  transition={{ delay: i * 0.08, duration: 0.4 }}
-                  className="text-4xl font-bold text-dark py-3 hover:text-brand transition-colors border-b border-dark/5 w-full"
-                >
-                  {link.label}
-                </motion.a>
-              ))}
-              <motion.a
-                href="#contacto"
-                onClick={() => setMobileOpen(false)}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="mt-10 bg-brand text-white px-10 py-4 rounded-full text-lg font-semibold"
-              >
-                Solicitar cotización
+        {open && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-40 bg-white flex flex-col justify-center px-10 lg:hidden">
+            {links.map((l, i) => (
+              <motion.a key={l.href} href={l.href} onClick={() => setOpen(false)} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }} className="text-3xl font-semibold text-dark py-3 border-b border-black/[0.04] hover:text-brand transition-colors">
+                {l.label}
               </motion.a>
-            </div>
+            ))}
+            <motion.a href="#contacto" onClick={() => setOpen(false)} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="mt-10 bg-brand text-white px-8 py-4 rounded-full text-center font-semibold">
+              Solicitar cotización
+            </motion.a>
           </motion.div>
         )}
       </AnimatePresence>

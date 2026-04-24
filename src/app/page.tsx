@@ -4,6 +4,7 @@ import Marquee from "@/components/Marquee";
 import About from "@/components/About";
 import WhyUs from "@/components/WhyUs";
 import Packs from "@/components/Packs";
+import Process from "@/components/Process";
 import Personalization from "@/components/Personalization";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -17,6 +18,7 @@ export default function Home() {
       <About />
       <WhyUs />
       <Packs />
+      <Process />
       <Personalization />
       <Contact />
       <Footer />
