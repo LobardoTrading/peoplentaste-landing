@@ -132,8 +132,8 @@ export default function Hero() {
           className="relative hidden lg:block"
         >
           <Image
-            src="https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?w=1200&q=85"
-            alt="Productos gourmet artesanales sobre mesa rústica"
+            src="https://images.unsplash.com/photo-1513558161293-cdaf765ed514?w=1200&q=85"
+            alt="Box gourmet con productos artesanales"
             fill
             className="object-cover"
             priority
@@ -150,8 +150,8 @@ export default function Hero() {
           className="relative h-[50vh] lg:hidden"
         >
           <Image
-            src="https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?w=800&q=80"
-            alt="Productos gourmet artesanales sobre mesa rústica"
+            src="https://images.unsplash.com/photo-1513558161293-cdaf765ed514?w=800&q=80"
+            alt="Box gourmet con productos artesanales"
             fill
             className="object-cover"
             priority

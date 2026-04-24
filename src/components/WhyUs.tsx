@@ -36,35 +36,6 @@ const reasons = [
   },
 ];
 
-function ReasonItem({ reason }: { reason: (typeof reasons)[0] }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5 }}
-      className="group border-b border-dark/8 last:border-0"
-    >
-      <div className="py-8 md:py-10 flex items-start gap-8 cursor-default">
-        <span className="text-brand/30 font-black text-[2.5rem] leading-none tracking-tighter group-hover:text-brand transition-colors duration-500 flex-shrink-0 w-16">
-          {reason.number}
-        </span>
-        <div className="pt-1">
-          <h3 className="text-xl md:text-2xl font-bold text-dark mb-3 group-hover:text-brand transition-colors duration-500">
-            {reason.title}
-          </h3>
-          <p className="text-muted font-light leading-relaxed max-w-md">
-            {reason.description}
-          </p>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
 export default function WhyUs() {
   const headerRef = useRef(null);
   const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
@@ -79,10 +50,10 @@ export default function WhyUs() {
               initial={{ opacity: 0 }}
               animate={headerInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6 }}
-              className="flex items-center gap-3 mb-6"
+              className="flex items-center gap-4 mb-6"
             >
-              <div className="w-8 h-[1px] bg-brand" />
-              <span className="text-brand text-[13px] font-medium tracking-[0.2em] uppercase">
+              <div className="w-10 h-[1px] bg-brand" />
+              <span className="text-brand text-[11px] font-semibold tracking-[0.25em] uppercase">
                 Diferencial
               </span>
             </motion.div>
@@ -91,7 +62,7 @@ export default function WhyUs() {
               initial={{ opacity: 0, y: 40 }}
               animate={headerInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-[3.5rem] font-black text-dark leading-[1.05] tracking-[-0.02em]"
+              className="text-4xl md:text-[3.2rem] font-black text-dark leading-[1.08] tracking-[-0.02em]"
             >
               ¿Por qué
               <br />
@@ -102,17 +73,34 @@ export default function WhyUs() {
               initial={{ opacity: 0, y: 20 }}
               animate={headerInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-muted mt-6 text-lg font-light leading-relaxed max-w-sm"
+              className="text-muted mt-6 text-[16px] font-light leading-relaxed max-w-sm"
             >
               Cinco razones por las que las mejores empresas nos eligen para sus
               regalos corporativos.
             </motion.p>
           </div>
 
-          {/* Right: Reasons */}
+          {/* Right: Reasons - no scroll animation, always visible */}
           <div>
             {reasons.map((reason) => (
-              <ReasonItem key={reason.number} reason={reason} />
+              <div
+                key={reason.number}
+                className="group border-b border-dark/[0.06] last:border-0"
+              >
+                <div className="py-8 md:py-10 flex items-start gap-8 cursor-default">
+                  <span className="text-brand/25 font-black text-[2.5rem] leading-none tracking-tighter group-hover:text-brand transition-colors duration-500 flex-shrink-0 w-16">
+                    {reason.number}
+                  </span>
+                  <div className="pt-1">
+                    <h3 className="text-xl md:text-[22px] font-bold text-dark mb-3 group-hover:text-brand transition-colors duration-500">
+                      {reason.title}
+                    </h3>
+                    <p className="text-muted font-light leading-[1.7] max-w-md text-[15px]">
+                      {reason.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>

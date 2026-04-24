@@ -76,8 +76,8 @@ export default function Personalization() {
             <div className="relative">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden img-zoom">
                 <Image
-                  src="https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?w=800&q=80"
-                  alt="Productos artesanales en mesa rústica"
+                  src="https://images.unsplash.com/photo-1545147986-a9d6f2ab03b5?w=800&q=80"
+                  alt="Box regalo corporativo con branding personalizado"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -93,8 +93,8 @@ export default function Personalization() {
                 className="absolute -bottom-6 -right-4 md:right-6 w-[45%] aspect-square rounded-xl overflow-hidden shadow-2xl shadow-dark/20 ring-4 ring-white img-zoom"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=400&q=80"
-                  alt="Frascos artesanales gourmet"
+                  src="https://images.unsplash.com/photo-1513558161293-cdaf765ed514?w=400&q=80"
+                  alt="Detalle de productos gourmet en caja"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 40vw, 20vw"

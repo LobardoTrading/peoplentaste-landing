@@ -10,7 +10,7 @@ const packs = [
     price: "32.000",
     products: "3 Salsas Arytza",
     description: "Una opción accesible y versátil para regalos masivos.",
-    image: "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=700&q=80",
+    image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed514?w=700&q=80",
     tag: null,
   },
   {
@@ -18,7 +18,7 @@ const packs = [
     price: "49.000",
     products: "Gin + Especias + Copa",
     description: "Ideal para sorprender con una experiencia lista para disfrutar.",
-    image: "https://images.unsplash.com/photo-1607622750671-6cd9a99eabd1?w=700&q=80",
+    image: "https://images.unsplash.com/photo-1482012792084-a0c3725f289f?w=700&q=80",
     tag: null,
   },
   {
@@ -26,7 +26,7 @@ const packs = [
     price: "55.000",
     products: "Vermouth o vino + Copa + Salsa Arytza",
     description: "Balance perfecto entre experiencia y valor percibido.",
-    image: "https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?w=700&q=80",
+    image: "https://images.unsplash.com/photo-1577003811926-53b288a6e5d0?w=700&q=80",
     tag: "Recomendado",
   },
   {
@@ -34,7 +34,7 @@ const packs = [
     price: "69.000",
     products: "Vermouth + Quesos y fiambres + Salsa Arytza + Pepinillos",
     description: "Una experiencia gourmet completa para ocasiones especiales.",
-    image: "https://images.unsplash.com/photo-1452195100486-9cc805987862?w=700&q=80",
+    image: "https://images.unsplash.com/photo-1549488344-cbb6c34cf08b?w=700&q=80",
     tag: null,
   },
   {
@@ -42,7 +42,7 @@ const packs = [
     price: "69.000",
     products: "Vino + Quesos y fiambres + Salsa Arytza + Pepinillos",
     description: "Ideal para sorprender con una experiencia lista para disfrutar.",
-    image: "https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=700&q=80",
+    image: "https://images.unsplash.com/photo-1545147986-a9d6f2ab03b5?w=700&q=80",
     tag: null,
   },
   {
@@ -50,7 +50,7 @@ const packs = [
     price: "89.000",
     products: "Vermouth + Vino + Quesos + Sopresatta + Aceitunas + Pepinillos + Salsa Arytza",
     description: "Nuestra propuesta más completa. Impacto asegurado.",
-    image: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?w=700&q=80",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=700&q=80",
     tag: "Exclusivo",
   },
 ];

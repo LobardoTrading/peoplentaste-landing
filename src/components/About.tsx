@@ -21,8 +21,8 @@ export default function About() {
           >
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden img-zoom">
               <Image
-                src="https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=800&q=80"
-                alt="Frascos artesanales sobre mesa de madera"
+                src="https://images.unsplash.com/photo-1577003811926-53b288a6e5d0?w=800&q=80"
+                alt="Canasta regalo gourmet con productos artesanales"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -37,8 +37,8 @@ export default function About() {
               className="absolute -bottom-6 -right-4 md:right-6 w-[50%] aspect-[4/3] rounded-xl overflow-hidden shadow-2xl shadow-dark/15 ring-4 ring-warm img-zoom"
             >
               <Image
-                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&q=80"
-                alt="Mesa rústica con productos gourmet"
+                src="https://images.unsplash.com/photo-1549488344-cbb6c34cf08b?w=500&q=80"
+                alt="Gift box elegante con productos seleccionados"
                 fill
                 className="object-cover"
                 sizes="25vw"
