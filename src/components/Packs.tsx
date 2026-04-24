@@ -1,222 +1,106 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import Image from "next/image";
 
 const packs = [
   {
-    id: 1,
     name: "Box Clásica",
-    price: "$32.000",
+    price: "32.000",
     products: "3 Salsas Arytza",
     description: "Una opción accesible y versátil para regalos masivos.",
-    tier: "accesible",
-    gradient: "from-warm-dark to-warm",
-    emoji: "🫙",
+    image:
+      "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=600&q=80",
+    tag: null,
   },
   {
-    id: 2,
     name: "Pack Básica Gin",
-    price: "$49.000",
+    price: "49.000",
     products: "Gin + Especias + Copa",
-    description: "Ideal para sorprender con una experiencia lista para disfrutar.",
-    tier: "popular",
-    gradient: "from-brand/10 to-warm",
-    emoji: "🍸",
+    description:
+      "Ideal para sorprender con una experiencia lista para disfrutar.",
+    image:
+      "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&q=80",
+    tag: null,
   },
   {
-    id: 3,
     name: "Box Gourmet",
-    price: "$55.000",
+    price: "55.000",
     products: "Vermouth o vino + Copa + Salsa Arytza",
     description: "Balance perfecto entre experiencia y valor percibido.",
-    tier: "recomendado",
-    gradient: "from-brand/10 to-brand/5",
-    emoji: "🍷",
+    image:
+      "https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=600&q=80",
+    tag: "Recomendado",
   },
   {
-    id: 4,
     name: "Box Deluxe N°1",
-    price: "$69.000",
-    products: "Vermouth + Quesos y fiambres seleccionados + Salsa Arytza + Pepinillos",
+    price: "69.000",
+    products:
+      "Vermouth + Quesos y fiambres seleccionados + Salsa Arytza + Pepinillos",
     description: "Una experiencia gourmet completa para ocasiones especiales.",
-    tier: "premium",
-    gradient: "from-dark/5 to-warm",
-    emoji: "🧀",
+    image:
+      "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80",
+    tag: null,
   },
   {
-    id: 5,
     name: "Box Deluxe N°2",
-    price: "$69.000",
-    products: "Vino + Quesos y fiambres seleccionados + Salsa Arytza + Pepinillos",
-    description: "Ideal para sorprender con una experiencia lista para disfrutar.",
-    tier: "premium",
-    gradient: "from-dark/5 to-warm",
-    emoji: "🥂",
+    price: "69.000",
+    products:
+      "Vino + Quesos y fiambres seleccionados + Salsa Arytza + Pepinillos",
+    description:
+      "Ideal para sorprender con una experiencia lista para disfrutar.",
+    image:
+      "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=600&q=80",
+    tag: null,
   },
   {
-    id: 6,
     name: "Box Signature",
-    price: "$89.000",
+    price: "89.000",
     products:
       "Vermouth + Vino + Quesos + Sopresatta + Aceitunas + Pepinillos + Salsa Arytza",
     description: "Nuestra propuesta más completa. Impacto asegurado.",
-    tier: "exclusivo",
-    gradient: "from-dark to-dark/90",
-    emoji: "👑",
+    image:
+      "https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?w=600&q=80",
+    tag: "Más exclusivo",
   },
 ];
-
-function PackCard({
-  pack,
-  index,
-  isInView,
-}: {
-  pack: (typeof packs)[0];
-  index: number;
-  isInView: boolean;
-}) {
-  const [hovered, setHovered] = useState(false);
-  const isSignature = pack.tier === "exclusivo";
-  const isRecommended = pack.tier === "recomendado";
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className={`relative group rounded-3xl overflow-hidden transition-all duration-500 card-shine ${
-        isSignature
-          ? "bg-dark text-white shadow-2xl shadow-dark/30 lg:scale-105"
-          : "bg-white shadow-lg hover:shadow-xl"
-      } ${isRecommended ? "ring-2 ring-brand" : ""}`}
-    >
-      {/* Badge */}
-      {(isRecommended || isSignature) && (
-        <div
-          className={`absolute top-4 right-4 z-10 px-3 py-1 rounded-full text-xs font-bold ${
-            isSignature
-              ? "bg-brand text-white"
-              : "bg-brand/10 text-brand border border-brand/20"
-          }`}
-        >
-          {isSignature ? "MÁS EXCLUSIVO" : "RECOMENDADO"}
-        </div>
-      )}
-
-      {/* Header with emoji */}
-      <div
-        className={`relative h-48 flex items-center justify-center ${
-          isSignature ? "bg-gradient-to-br from-brand/30 to-dark" : `bg-gradient-to-br ${pack.gradient}`
-        }`}
-      >
-        <motion.span
-          animate={hovered ? { scale: 1.3, rotate: 10 } : { scale: 1, rotate: 0 }}
-          transition={{ type: "spring", stiffness: 300 }}
-          className="text-7xl"
-        >
-          {pack.emoji}
-        </motion.span>
-
-        {/* Price tag */}
-        <div
-          className={`absolute top-4 left-4 px-4 py-2 rounded-xl font-black text-lg ${
-            isSignature
-              ? "bg-brand text-white"
-              : "bg-brand text-white shadow-lg shadow-brand/30"
-          }`}
-        >
-          {pack.price}
-          <span className="text-[10px] font-medium opacity-80 ml-1">+ IVA</span>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="p-6">
-        <h3
-          className={`text-xl font-black mb-3 ${
-            isSignature ? "text-white" : "text-dark"
-          }`}
-        >
-          {pack.name}
-        </h3>
-
-        <div
-          className={`text-sm mb-4 ${
-            isSignature ? "text-white/60" : "text-dark/50"
-          }`}
-        >
-          <span className="font-semibold text-brand text-xs uppercase tracking-wider">
-            Productos
-          </span>
-          <div
-            className={`w-full h-px my-2 ${
-              isSignature ? "bg-white/10" : "bg-dark/10"
-            }`}
-          />
-          <span className={isSignature ? "text-white/80" : "text-dark/70"}>
-            {pack.products}
-          </span>
-        </div>
-
-        <p
-          className={`text-sm leading-relaxed mb-6 ${
-            isSignature ? "text-white/70" : "text-dark/60"
-          }`}
-        >
-          {pack.description}
-        </p>
-
-        <a
-          href="#contacto"
-          className={`block w-full text-center py-3 rounded-xl font-semibold text-sm transition-all duration-300 ${
-            isSignature
-              ? "bg-brand text-white hover:bg-brand-light"
-              : "bg-dark text-white hover:bg-brand"
-          } hover:scale-[1.02] hover:shadow-lg`}
-        >
-          Consultar
-        </a>
-      </div>
-    </motion.div>
-  );
-}
 
 export default function Packs() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section id="packs" className="py-28 bg-warm relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-
-      <div ref={ref} className="max-w-7xl mx-auto px-6">
+    <section id="packs" className="py-32 bg-warm relative overflow-hidden grain">
+      <div ref={ref} className="max-w-[1400px] mx-auto px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+        <div className="max-w-2xl mb-20">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-brand text-sm font-medium uppercase tracking-widest"
+            className="flex items-center gap-3 mb-6"
           >
-            Catálogo
-          </motion.span>
+            <div className="w-8 h-[1px] bg-brand" />
+            <span className="text-brand text-[13px] font-medium tracking-[0.2em] uppercase">
+              Catálogo
+            </span>
+          </motion.div>
+
           <motion.h2
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-dark mt-4 mb-6"
+            className="text-4xl md:text-[3.5rem] font-black text-dark leading-[1.05] tracking-[-0.02em] mb-6"
           >
             Nuestros packs
           </motion.h2>
+
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-dark/60 text-lg max-w-2xl mx-auto"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-muted text-lg font-light leading-relaxed"
           >
             Desde opciones accesibles hasta propuestas premium, diseñamos boxes
             que se adaptan a distintos objetivos, presupuestos y momentos de
@@ -224,31 +108,149 @@ export default function Packs() {
           </motion.p>
         </div>
 
-        {/* Pack cards grid */}
+        {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {packs.map((pack, i) => (
-            <PackCard key={pack.id} pack={pack} index={i} isInView={isInView} />
-          ))}
+          {packs.map((pack, i) => {
+            const isSignature = pack.tag === "Más exclusivo";
+            return (
+              <motion.div
+                key={pack.name}
+                initial={{ opacity: 0, y: 40 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.3 + i * 0.1 }}
+                className={`group relative rounded-2xl overflow-hidden transition-all duration-700 ${
+                  isSignature
+                    ? "bg-dark-soft text-white ring-1 ring-white/10"
+                    : "bg-white ring-1 ring-dark/5 hover:ring-brand/20"
+                } hover:shadow-2xl hover:-translate-y-1`}
+              >
+                {/* Image */}
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={pack.image}
+                    alt={pack.name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div
+                    className={`absolute inset-0 ${
+                      isSignature
+                        ? "bg-gradient-to-t from-dark-soft via-dark-soft/30 to-transparent"
+                        : "bg-gradient-to-t from-black/40 via-transparent to-transparent"
+                    }`}
+                  />
+
+                  {/* Price */}
+                  <div className="absolute top-5 left-5">
+                    <div className="bg-brand text-white px-4 py-2 rounded-lg font-bold text-lg tracking-tight">
+                      ${pack.price}
+                      <span className="text-[10px] font-normal text-white/70 ml-1">
+                        + IVA
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Tag */}
+                  {pack.tag && (
+                    <div className="absolute top-5 right-5">
+                      <div
+                        className={`px-3 py-1.5 rounded-lg text-[11px] font-semibold tracking-wide uppercase ${
+                          isSignature
+                            ? "bg-white text-dark"
+                            : "bg-dark/80 text-white backdrop-blur-sm"
+                        }`}
+                      >
+                        {pack.tag}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="p-7">
+                  <h3
+                    className={`text-xl font-bold mb-4 ${
+                      isSignature ? "text-white" : "text-dark"
+                    }`}
+                  >
+                    {pack.name}
+                  </h3>
+
+                  <div className="mb-5">
+                    <span
+                      className={`text-[11px] font-semibold tracking-[0.15em] uppercase ${
+                        isSignature ? "text-brand-light" : "text-brand"
+                      }`}
+                    >
+                      Incluye
+                    </span>
+                    <div
+                      className={`w-full h-[1px] my-3 ${
+                        isSignature ? "bg-white/10" : "bg-dark/8"
+                      }`}
+                    />
+                    <p
+                      className={`text-sm leading-relaxed ${
+                        isSignature ? "text-white/60" : "text-muted"
+                      }`}
+                    >
+                      {pack.products}
+                    </p>
+                  </div>
+
+                  <p
+                    className={`text-sm leading-relaxed mb-7 font-medium ${
+                      isSignature ? "text-white/80" : "text-dark/70"
+                    }`}
+                  >
+                    {pack.description}
+                  </p>
+
+                  <a
+                    href="#contacto"
+                    className={`block w-full text-center py-3.5 rounded-xl text-[13px] font-semibold tracking-wide uppercase transition-all duration-500 ${
+                      isSignature
+                        ? "bg-brand text-white hover:bg-brand-light"
+                        : "bg-dark text-white hover:bg-brand"
+                    }`}
+                  >
+                    Consultar
+                  </a>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Bottom CTA */}
+        {/* Bottom */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="text-center mt-16"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="flex items-center justify-center gap-4 mt-16 pt-10 border-t border-dark/5"
         >
-          <p className="text-dark/50 mb-4">
-            ¿Necesitás algo diferente? Armamos packs a medida.
-          </p>
+          <span className="text-muted font-light">
+            ¿Necesitás algo diferente?
+          </span>
           <a
             href="#contacto"
-            className="inline-flex items-center gap-2 text-brand font-semibold hover:text-brand-dark transition-colors group"
+            className="group text-brand font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all duration-300"
           >
-            Consultanos
-            <span className="group-hover:translate-x-1 transition-transform">
-              →
-            </span>
+            Armamos packs a medida
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
           </a>
         </motion.div>
       </div>

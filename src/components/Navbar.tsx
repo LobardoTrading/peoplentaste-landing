@@ -4,9 +4,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { href: "#inicio", label: "Inicio" },
   { href: "#nosotros", label: "Nosotros" },
-  { href: "#por-que", label: "Por qué elegirnos" },
+  { href: "#por-que", label: "Diferencial" },
   { href: "#packs", label: "Packs" },
   { href: "#personalizacion", label: "Personalización" },
   { href: "#contacto", label: "Contacto" },
@@ -22,33 +21,36 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
   return (
     <>
-      <motion.nav
+      <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
           scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-lg py-3"
-            : "bg-transparent py-5"
+            ? "bg-white/90 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.06)] py-4"
+            : "bg-transparent py-6"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#inicio" className="flex items-center gap-2 group">
-            <div className="relative">
+        <div className="max-w-[1400px] mx-auto px-8 flex items-center justify-between">
+          <a href="#inicio" className="relative z-10">
+            <div className="leading-[0.85]">
               <span
-                className={`font-black text-xl tracking-tighter leading-none transition-colors duration-300 ${
-                  scrolled ? "text-brand" : "text-white"
+                className={`font-black text-[15px] tracking-[-0.02em] block transition-colors duration-500 ${
+                  scrolled || mobileOpen ? "text-dark" : "text-white"
                 }`}
               >
                 PEOPLE
               </span>
-              <br />
               <span
-                className={`font-black text-xl tracking-tighter leading-none transition-colors duration-300 ${
-                  scrolled ? "text-brand" : "text-brand-light"
+                className={`font-black text-[15px] tracking-[-0.02em] block transition-colors duration-500 ${
+                  scrolled || mobileOpen ? "text-brand" : "text-brand-light"
                 }`}
               >
                 &TASTE
@@ -56,86 +58,102 @@ export default function Navbar() {
             </div>
           </a>
 
-          {/* Desktop links */}
-          <div className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-all duration-300 hover:text-brand relative group ${
-                  scrolled ? "text-dark" : "text-white/90"
+                className={`text-[13px] font-medium tracking-wide uppercase transition-all duration-300 hover:text-brand ${
+                  scrolled ? "text-muted" : "text-white/70 hover:text-white"
                 }`}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
+          </nav>
+
+          <div className="hidden lg:block">
             <a
               href="#contacto"
-              className="bg-brand text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-dark transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-brand/25"
+              className={`text-[13px] font-semibold tracking-wide uppercase px-7 py-3 rounded-full transition-all duration-300 ${
+                scrolled
+                  ? "bg-dark text-white hover:bg-brand"
+                  : "bg-white/10 text-white border border-white/20 hover:bg-white hover:text-dark backdrop-blur-sm"
+              }`}
             >
-              Cotizar ahora
+              Cotizar
             </a>
           </div>
 
-          {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden flex flex-col gap-1.5 p-2"
+            className="lg:hidden relative z-10 w-8 h-8 flex flex-col items-center justify-center gap-[5px]"
             aria-label="Menú"
           >
             <motion.span
-              animate={mobileOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-              className={`block w-6 h-0.5 transition-colors ${
+              animate={
+                mobileOpen
+                  ? { rotate: 45, y: 7, background: "#111" }
+                  : { rotate: 0, y: 0 }
+              }
+              className={`block w-6 h-[1.5px] transition-colors ${
                 scrolled || mobileOpen ? "bg-dark" : "bg-white"
               }`}
             />
             <motion.span
-              animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-              className={`block w-6 h-0.5 transition-colors ${
+              animate={mobileOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+              className={`block w-6 h-[1.5px] transition-colors ${
                 scrolled || mobileOpen ? "bg-dark" : "bg-white"
               }`}
             />
             <motion.span
-              animate={mobileOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-              className={`block w-6 h-0.5 transition-colors ${
+              animate={
+                mobileOpen
+                  ? { rotate: -45, y: -7, background: "#111" }
+                  : { rotate: 0, y: 0 }
+              }
+              className={`block w-6 h-[1.5px] transition-colors ${
                 scrolled || mobileOpen ? "bg-dark" : "bg-white"
               }`}
             />
           </button>
         </div>
-      </motion.nav>
+      </motion.header>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-white pt-24 px-6 lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 z-40 bg-warm lg:hidden"
           >
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col justify-center items-start h-full px-12">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="text-2xl font-semibold text-dark hover:text-brand transition-colors"
+                  exit={{ opacity: 0, x: -30 }}
+                  transition={{ delay: i * 0.08, duration: 0.4 }}
+                  className="text-4xl font-bold text-dark py-3 hover:text-brand transition-colors border-b border-dark/5 w-full"
                 >
                   {link.label}
                 </motion.a>
               ))}
-              <a
+              <motion.a
                 href="#contacto"
                 onClick={() => setMobileOpen(false)}
-                className="bg-brand text-white px-6 py-3 rounded-full text-lg font-semibold text-center hover:bg-brand-dark transition-all mt-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="mt-10 bg-brand text-white px-10 py-4 rounded-full text-lg font-semibold"
               >
-                Cotizar ahora
-              </a>
+                Solicitar cotización
+              </motion.a>
             </div>
           </motion.div>
         )}

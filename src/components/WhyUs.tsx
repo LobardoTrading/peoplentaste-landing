@@ -6,107 +6,101 @@ import { useRef } from "react";
 const reasons = [
   {
     number: "01",
-    title: "Experiencias",
-    highlight: ", no solo regalos",
+    title: "Experiencias, no solo regalos",
     description:
       "Cada box está pensada para generar un momento memorable, no solo entregar un producto.",
-    icon: "🎁",
   },
   {
     number: "02",
-    title: "Selección ",
-    highlight: "gourmet cuidada",
+    title: "Selección gourmet cuidada",
     description:
       "Trabajamos con productores locales premium y marcas reconocidas de gastronomía argentina.",
-    icon: "🍷",
   },
   {
     number: "03",
-    title: "Logística ",
-    highlight: "simple y escalable",
+    title: "Logística simple y escalable",
     description:
       "Nos encargamos de todo: armado, packaging y entrega. Desde 10 hasta 1000 boxes.",
-    icon: "📦",
   },
   {
     number: "04",
-    title: "Personalización ",
-    highlight: "de productos",
+    title: "Personalización de productos",
     description:
       "Adaptamos cada box a tu marca con branding en packaging y selección a medida.",
-    icon: "✨",
   },
   {
     number: "05",
-    title: "Para clientes, ",
-    highlight: "eventos y equipos",
+    title: "Para clientes, eventos y equipos",
     description:
       "Regalos para fin de año, onboarding, eventos corporativos, fidelización y más.",
-    icon: "👥",
   },
 ];
 
 export default function WhyUs() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="por-que" className="py-28 bg-white relative overflow-hidden">
-      {/* Subtle background */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-brand/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-
-      <div ref={ref} className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-[1fr,1.5fr] gap-16 items-start">
-          {/* Left: Title */}
+    <section id="por-que" className="py-32 bg-white relative">
+      <div ref={ref} className="max-w-[1400px] mx-auto px-8">
+        <div className="grid lg:grid-cols-[1fr,1.4fr] gap-20 items-start">
+          {/* Left */}
           <div className="lg:sticky lg:top-32">
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6 }}
-              className="text-brand text-sm font-medium uppercase tracking-widest"
+              className="flex items-center gap-3 mb-6"
             >
-              Diferencial
-            </motion.span>
+              <div className="w-8 h-[1px] bg-brand" />
+              <span className="text-brand text-[13px] font-medium tracking-[0.2em] uppercase">
+                Diferencial
+              </span>
+            </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-black text-dark mt-4 leading-tight"
+              className="text-4xl md:text-[3.5rem] font-black text-dark leading-[1.05] tracking-[-0.02em]"
             >
               ¿Por qué
               <br />
               <span className="text-brand">People&Taste</span>?
             </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-muted mt-6 text-lg font-light leading-relaxed max-w-sm"
+            >
+              Cinco razones por las que las mejores empresas nos eligen para sus
+              regalos corporativos.
+            </motion.p>
           </div>
 
-          {/* Right: Reasons list */}
-          <div className="space-y-6">
+          {/* Right: Reasons */}
+          <div>
             {reasons.map((reason, i) => (
               <motion.div
                 key={reason.number}
-                initial={{ opacity: 0, x: 40 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 + i * 0.15 }}
-                className="group relative bg-warm/50 hover:bg-warm rounded-2xl p-8 transition-all duration-500 hover:shadow-lg hover:shadow-brand/5 border border-transparent hover:border-brand/10 cursor-default"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.3 + i * 0.12 }}
+                className="group border-b border-dark/8 last:border-0"
               >
-                <div className="flex items-start gap-6">
-                  <div className="flex-shrink-0">
-                    <div className="w-14 h-14 border-2 border-brand/20 rounded-xl flex items-center justify-center text-brand font-black text-sm group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-all duration-300">
-                      {reason.number}
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-dark mb-2">
+                <div className="py-8 md:py-10 flex items-start gap-8 cursor-default">
+                  <span className="text-brand/30 font-black text-[2.5rem] leading-none tracking-tighter group-hover:text-brand transition-colors duration-500 flex-shrink-0 w-16">
+                    {reason.number}
+                  </span>
+                  <div className="pt-1">
+                    <h3 className="text-xl md:text-2xl font-bold text-dark mb-3 group-hover:text-brand transition-colors duration-500">
                       {reason.title}
-                      <span className="text-brand">{reason.highlight}</span>
                     </h3>
-                    <p className="text-dark/60 leading-relaxed">
+                    <p className="text-muted font-light leading-relaxed max-w-md">
                       {reason.description}
                     </p>
-                  </div>
-                  <div className="flex-shrink-0 text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {reason.icon}
                   </div>
                 </div>
               </motion.div>

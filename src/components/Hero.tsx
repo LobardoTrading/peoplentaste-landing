@@ -1,175 +1,134 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section
-      id="inicio"
-      className="relative min-h-screen flex items-center overflow-hidden bg-dark"
-    >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-dark via-dark to-brand/30 animate-gradient" />
+    <section id="inicio" className="relative h-screen min-h-[700px] overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <Image
+          src="https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?w=1920&q=80"
+          alt="Selección gourmet"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-dark/90 via-dark/70 to-dark/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-dark/30" />
+      </div>
 
-      {/* Decorative elements */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-brand/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-brand/5 rounded-full blur-3xl" />
-
-      {/* Grid pattern overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
+      <div className="relative z-10 h-full flex items-center">
+        <div className="max-w-[1400px] mx-auto px-8 w-full">
+          <div className="max-w-2xl">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="flex items-center gap-3 mb-8"
             >
-              <span className="inline-block bg-brand/20 text-brand-light px-4 py-1.5 rounded-full text-sm font-medium mb-6 backdrop-blur-sm border border-brand/20">
-                Regalos Corporativos Gourmet
+              <div className="w-8 h-[1px] bg-brand" />
+              <span className="text-brand-light text-[13px] font-medium tracking-[0.2em] uppercase">
+                Regalos Corporativos
               </span>
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[0.95] mb-6"
-            >
-              Boxes gourmet
-              <br />
-              para{" "}
-              <span className="text-brand-light relative">
-                sorprender
-                <svg
-                  className="absolute -bottom-2 left-0 w-full"
-                  viewBox="0 0 300 12"
-                  fill="none"
-                >
-                  <path
-                    d="M2 8C50 2 150 2 298 8"
-                    stroke="#E86A3A"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>
-            </motion.h1>
+            <div className="overflow-hidden">
+              <motion.h1
+                initial={{ y: 120 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="text-[clamp(3rem,7vw,6rem)] font-black text-white leading-[0.92] tracking-[-0.03em] mb-8"
+              >
+                Boxes gourmet
+                <br />
+                para{" "}
+                <span className="italic font-light text-brand-light">sorprender</span>
+              </motion.h1>
+            </div>
 
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg md:text-xl text-white/70 mb-10 max-w-lg leading-relaxed"
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="text-white/60 text-lg md:text-xl leading-relaxed mb-12 max-w-md font-light"
             >
-              Diseñamos experiencias gastronómicas pensadas para empresas que
-              buscan diferenciarse. Para clientes, eventos y equipos.
+              Experiencias gastronómicas diseñadas para empresas que buscan
+              diferenciarse. Para clientes, eventos y equipos.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              transition={{ duration: 0.8, delay: 1 }}
               className="flex flex-col sm:flex-row gap-4"
             >
               <a
                 href="#packs"
-                className="bg-brand text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-brand-dark transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-brand/30 text-center"
+                className="group bg-brand text-white px-9 py-4 rounded-full font-semibold text-[15px] hover:bg-brand-dark transition-all duration-500 inline-flex items-center gap-3"
               >
-                Ver nuestros packs
+                Ver packs
+                <svg
+                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </a>
               <a
                 href="#contacto"
-                className="border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 hover:border-white/60 text-center backdrop-blur-sm"
+                className="text-white/70 px-9 py-4 rounded-full font-medium text-[15px] border border-white/15 hover:border-white/40 hover:text-white transition-all duration-500 backdrop-blur-sm text-center"
               >
-                Contactanos
+                Solicitar cotización
               </a>
             </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1.2 }}
-              className="flex gap-10 mt-14"
-            >
-              {[
-                { value: "6", label: "Packs disponibles" },
-                { value: "100%", label: "Personalizable" },
-                { value: "B2B", label: "Enfoque corporativo" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <div className="text-3xl font-black text-brand-light">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-white/50 mt-1">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
           </div>
-
-          {/* Right side decorative box */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="hidden lg:flex justify-center"
-          >
-            <div className="relative">
-              {/* Main card */}
-              <div className="w-80 h-96 bg-gradient-to-br from-brand to-brand-dark rounded-3xl shadow-2xl shadow-brand/20 flex items-center justify-center p-8 animate-float">
-                <div className="text-center">
-                  <div className="text-white font-black text-4xl leading-none mb-2">
-                    PEOPLE
-                  </div>
-                  <div className="text-white/80 font-black text-4xl leading-none">
-                    &TASTE
-                  </div>
-                  <div className="w-16 h-0.5 bg-white/40 mx-auto my-6" />
-                  <div className="text-white/60 text-sm">
-                    Experiencias gastronómicas corporativas
-                  </div>
-                </div>
-              </div>
-              {/* Floating accent cards */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-brand-light/20 rounded-2xl backdrop-blur-sm border border-brand-light/30 flex items-center justify-center">
-                <span className="text-3xl">🍷</span>
-              </div>
-              <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20 flex items-center justify-center">
-                <span className="text-2xl">🧀</span>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Bottom info bar */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.4 }}
+        className="absolute bottom-0 left-0 right-0 z-10"
       >
-        <a href="#nosotros" className="flex flex-col items-center gap-2 group">
-          <span className="text-white/40 text-xs tracking-widest uppercase group-hover:text-white/70 transition-colors">
-            Scroll
-          </span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2 group-hover:border-white/60 transition-colors"
-          >
-            <div className="w-1 h-2 bg-brand-light rounded-full" />
-          </motion.div>
-        </a>
+        <div className="max-w-[1400px] mx-auto px-8 pb-10">
+          <div className="flex items-center gap-12 text-white/30 text-sm">
+            <div className="hidden md:flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-brand" />
+              <span>6 packs disponibles</span>
+            </div>
+            <div className="hidden md:flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-brand" />
+              <span>Personalización total</span>
+            </div>
+            <div className="hidden md:flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-brand" />
+              <span>Entrega en todo el país</span>
+            </div>
+            <div className="flex-1" />
+            <a href="#nosotros" className="group flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors">
+              <span className="text-xs tracking-[0.15em] uppercase">Scroll</span>
+              <motion.svg
+                animate={{ y: [0, 4, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1.5}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7" />
+              </motion.svg>
+            </a>
+          </div>
+        </div>
       </motion.div>
     </section>
   );
